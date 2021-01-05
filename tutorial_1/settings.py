@@ -54,7 +54,7 @@ ROOT_URLCONF = 'tutorial_1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['register/templates'],
+        'DIRS': ['register/templates','display/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
