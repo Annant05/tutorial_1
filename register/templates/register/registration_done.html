@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Done</title>
+    <title>Done</title> {% csrf_token %}
 </head>
 <body>
-Done
+
+Email:    {{email }}
+<br>
+Name:    {{name }}
+<br>
+Standard:    {{std }}
+<br>
+Roll Number:    {{rollno }}
+<br>
+City:    {{city }}
+<br>
+<br>
+Data entered successfully!!
+
 </body>
 </html>

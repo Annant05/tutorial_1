@@ -1,0 +1,26 @@
+{
+  "stud": [
+    {
+      "email": "example1@gmail",
+      "name": "XYZ",
+      "std": "12",
+      "rollno": "123456",
+      "city": "Delhi"
+    },
+    {
+      "email": "example2@gmail",
+      "name": "ABC",
+      "std": "12",
+      "rollno": "98876554",
+      "city": "Delhi"
+    }
+
+    {
+      "email": "ahsdgskj",
+      "name": "RAm",
+      "std": "3",
+      "rollno": "1234",
+      "city": "Indore"
+    }
+  ]
+}
