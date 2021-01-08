@@ -1,39 +1,45 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 import json
+
 # Create your views here.
+from register.models import Student
+
 
 def index(request):
-    if request.method=="GET":
-         f = open("./db/student_list.json", "r")
-         student_list = json.loads(f.read())["stud"]
+    if request.method == "GET":
+        # f = open("./db/student_list.json", "r")
+        # student_list = json.loads(f.read())["stud"]
+        student_list = Student.objects.values()
+        return render(request, 'display/table.html ', {"student_list": student_list})
 
-         return render(request, 'display/table.html ', {"student_list":student_list})
 
 def search(request):
-    if request.method=="POST":
+    if request.method == "POST":
         searched_rollno = request.POST.get('search_box')
-        f = open("./db/student_list.json", "r")
-        student_list = json.loads(f.read())["stud"]
-        for student in student_list:
-            if student['rollno']==searched_rollno:
-                return render(request, 'display/search_display.html ', {"student_list":[student]})
+        student_list=Student.objects.filter(rollno=searched_rollno).values()
+        print(student_list)
+        if len(student_list)==0:
+            return HttpResponse("Roll number not found!")
+        else:
+            return render(request, 'display/search_display.html ', {"student_list": student_list})
 
-        return HttpResponse("Roll number not found!")
+#        return HttpResponse("Roll number not found!")
+
 
 def delete_entry(request):
     delete_rollno = request.POST.get('delete_rollno')
-    print("line 26 ", delete_rollno)
-    f = open("./db/student_list.json", "r")
-    student_list = json.loads(f.read())["stud"]
-    for student in student_list:
-        if student['rollno'] == delete_rollno:
-            print(student_list)
-            student_list.remove(student)
-            print(student_list)
-            f = open("./db/student_list.json", "w")
-            f.write(json.dumps({'stud': student_list}))
-            f.close()
-
+    student_list = Student.objects.filter(rollno=delete_rollno).delete()
+ #   print(student_list)
+    # f = open("./db/student_list.json", "r")
+    # student_list = json.loads(f.read())["stud"]
+    # for student in student_list:
+    #     if student['rollno'] == delete_rollno:
+    #         # print(student_list)
+    #         student_list.remove(student)
+    #         # print(student_list)
+    #         f = open("./db/student_list.json", "w")
+    #         f.write(json.dumps({'stud': student_list}))
+    #         f.close()
 
     return redirect('/display/')
