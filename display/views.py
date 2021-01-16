@@ -30,16 +30,6 @@ def search(request):
 def delete_entry(request):
     delete_rollno = request.POST.get('delete_rollno')
     student_list = Student.objects.filter(rollno=delete_rollno).delete()
- #   print(student_list)
-    # f = open("./db/student_list.json", "r")
-    # student_list = json.loads(f.read())["stud"]
-    # for student in student_list:
-    #     if student['rollno'] == delete_rollno:
-    #         # print(student_list)
-    #         student_list.remove(student)
-    #         # print(student_list)
-    #         f = open("./db/student_list.json", "w")
-    #         f.write(json.dumps({'stud': student_list}))
-    #         f.close()
+
 
     return redirect('/display/')
