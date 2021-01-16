@@ -47,8 +47,18 @@ tr:nth-child(even) {
   </tr>
   {% endfor %}
 
-
 </table>
+<br>
+<form action="/display/display" method="post"> {% csrf_token %}
+<input style="visibility: hidden"   value="{{student_list.0.rollno}}" name="delete_rollno">
+  <button type="submit" >
+      Delete
+  </button>
+</form>
+  <button ><a href="/display/">
 
+      Go back
+ </a>
+   </button>
 </body>
 </html>

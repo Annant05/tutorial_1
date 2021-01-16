@@ -1,0 +1,6 @@
+# my.cnf
+[client]
+database = studentdb
+user = djangouser1
+password = djangopass1
+default-character-set = utf8
