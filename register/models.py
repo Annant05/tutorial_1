@@ -18,5 +18,5 @@ class Student(models.Model):
     email = models.CharField(max_length=30)
     rollno = models.CharField(max_length=10)
     name = models.CharField(max_length=30)
-    std = models.IntegerField(max_length=2, choices=stds)
+    std = models.IntegerField(choices=stds)
     city = models.CharField(max_length=10)
